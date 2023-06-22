@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dv2">
+        <input type="button" value="Display Data" id="dis" onclick="disp()">
+        <br><br>
+        <div id="data"></div>
+    </div>
+
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        var txt = "";
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    txt = JSON.parse(xhr.responseText);
+                }
+            }
+        }
+        xhr.open("GET","data.json");
+        xhr.send("");
+
+        function disp(){
+            for(var i=1; i<6; i++){
+                if(i==1){
+                    document.getElementById("dv2").innerHTML = "Employee name: " +txt[i].name + "<br>";
+                    document.getElementById("dv2").innerHTML += "Employee Department: " +txt[i].dept + "<br>";
+                    document.getElementById("dv2").innerHTML += "Employee Salary: " +txt[i].salary + "$" + "<br>";
+                    document.getElementById("dv2").innerHTML += "<br>";
+                }else{
+                    document.getElementById("dv2").innerHTML += "Employee name: " +txt[i].name + "<br>";
+                    document.getElementById("dv2").innerHTML += "Employee Department: " +txt[i].dept + "<br>";
+                    document.getElementById("dv2").innerHTML += "Employee Salary: " +txt[i].salary + "$" + "<br>";
+                    document.getElementById("dv2").innerHTML += "<br>";
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

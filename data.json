@@ -1,0 +1,31 @@
+[
+    {
+        "username" : "yusefsherif",
+        "password" : "test2"
+    },
+    {
+        "name":"yusef",
+        "dept":"cs",
+        "salary":2000
+    },
+    {
+        "name":"ali",
+        "dept":"ai",
+        "salary":3000
+    },
+    {
+        "name":"kamal",
+        "dept":"it",
+        "salary":4000
+    },
+    {
+        "name":"mustafa",
+        "dept":"eng",
+        "salary":5000
+    },
+    {
+        "name":"hager",
+        "dept":"bio",
+        "salary":6000
+    }
+]

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="dv">
+        <label for="usrnm">Username:</label>
+        <input type="text" name="username" id="usrnm" placeholder="Enter Username">
+        <br>
+        <label id="ps" for="pass">password:</label>
+        <input type="password" name="password" id="pass" placeholder="Enter Password">
+        <br><br><br>
+        <input type="submit" value="Login" onclick="log()">
+        <br><br>
+        <input type="checkbox" value="Remember Me" id="keep">
+        <label for="keep">Remember Me</label>
+    </div>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        var txt = "";
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    txt = JSON.parse(xhr.responseText);
+                }
+            }
+        }
+        xhr.open("GET","data.json");
+        xhr.send("");
+        /////////////////////////////////////
+        var val,val2;
+        var keep2;
+        function log(){
+            var date = new Date();
+            keep2 = document.getElementById("keep").checked;
+            if(keep2){
+                date.setMonth(date.getMonth()+3);
+            }
+            val = document.getElementById("usrnm").value;
+            val2 = document.getElementById("pass").value;
+            document.cookie = "UsernameCookie=" +val+ ";expires=" +date;
+            document.cookie = "PasswordCookie=" +val2+ ";expires=" +date;
+            if(val==txt[0]["username"]&&val2==txt[0]["password"]){
+                location.assign("page1.html");
+            }
+            else{
+                alert("Wrong Username or Password");
+                location.reload();
+            }
+        }
+        
+    </script>
+</body>
+</html>
